@@ -9,8 +9,6 @@ class WorkLoadController < ApplicationController
 
   
   def show
-    
-    
     @fecha_actual = (!params[:fecha_actual].nil? && params[:fecha_actual].respond_to?(:to_date)  ) ? params[:fecha_actual].gsub('/', '-').to_date.strftime("%Y-%m-%d") : DateTime.now.strftime("%Y-%m-%d")
     if ( params[:month].nil? ||   params[:months].nil? ||  params[:year].nil?   ) then
       params[:month] = DateTime.now.month
@@ -38,9 +36,6 @@ class WorkLoadController < ApplicationController
       @barras_days.push(16 * @utils.tools.distance_of_time_in_days(@gantt.date_from.to_date.strftime("%Y-%m-%d"),  current_date.to_date.end_of_month.strftime("%Y-%m-%d")))
       current_date = current_date.to_date.end_of_month + 1
     end
-    
-   
-    
   end
 
 end
